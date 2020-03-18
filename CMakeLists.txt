@@ -6,7 +6,7 @@ endif()
 
 project ("libcpcs_runtime" C)
 
-set (CMAKE_C_STANDARD ANSI)
+set (CMAKE_C_STANDARD 90)
 set (CMAKE_C_STANDARD_REQUIRED ON)
 set (CMAKE_C_EXTENSIONS OFF)
 
@@ -14,9 +14,10 @@ if (NOT CMAKE_BUILD_TYPE)
     set (CMAKE_BUILD_TYPE "Debug")
 endif (NOT CMAKE_BUILD_TYPE)
 
+option (WITH_TESTS "Build unitest" ON)
 option (WITH_COVERAGE "Build with code coverage" OFF)
-option(BUILD_STATIC "Build static lib" ON)
-option(BUILD_SHARED "Build shared lib" ON)
+option (BUILD_STATIC "Build static lib" ON)
+option (BUILD_SHARED "Build shared lib" ON)
 
 include_directories (
     include/
@@ -26,3 +27,9 @@ add_subdirectory(src)
 if (WITH_COVERAGE)
 	add_compile_options (-O0 -g --coverage)
 endif (WITH_COVERAGE)
+
+if (WITH_TESTS)
+    enable_testing ()
+    set (BUILD_STATIC ON)
+    add_subdirectory (tests)
+endif (WITH_TESTS)
