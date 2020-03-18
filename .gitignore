@@ -1,0 +1,16 @@
+*.o
+
+# vim mess
+*.swp
+
+# vscode mess
+.vscode
+.vs
+
+# coverage
+coverage.info
+*.gcda
+*.gcno
+
+#Cmake 
+build/
