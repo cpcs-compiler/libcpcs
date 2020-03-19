@@ -1,6 +1,7 @@
 set (SRCS
     init.c
     context.c
+    utils.c
 )
 
 add_library (objlib OBJECT ${SRCS})

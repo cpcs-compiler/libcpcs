@@ -30,7 +30,7 @@ cpcs_variable_t *cpcs_get_from_context(cpcs_variable_t *ctx, const char *indent)
 
     for (tmp = ctx; tmp != NULL; tmp = tmp->next)
     {
-        if (strcasecmp(indent, tmp->identifier) == 0)
+        if (cpcs_strcasecmp(indent, tmp->identifier) == 0)
             return (tmp);
     }
     return (NULL);
