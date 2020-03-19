@@ -25,9 +25,24 @@ void    test_cpcs_strcasecmp_case(void)
     assert(res == 0);
 }
 
+void    test_cpcs_strcasecmp_differ(void)
+{
+    const char *s1;
+    const char *s2;
+    int res;
+
+    s1 = "Hello";
+    s2 = "World";
+    res = cpcs_strcasecmp(s1, s2);
+
+    assert(res != 0);
+}
+
 int main(void)
 {
     test_cpcs_strcasecmp_same_ptr();
     test_cpcs_strcasecmp_case();
+    test_cpcs_strcasecmp_differ();
+
     return (0);
 }
