@@ -33,4 +33,6 @@ void    cpcs_push_to_global_context(cpcs_variable_t *);
 cpcs_variable_t *cpcs_get_from_context(cpcs_variable_t *, const char *);
 cpcs_variable_t *cpcs_get_from_global(const char *);
 
+void cpcs_cls(void);
+
 #endif /* !CPCSC_RUNTIME_H */
