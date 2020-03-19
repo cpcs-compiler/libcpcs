@@ -22,11 +22,14 @@ option (BUILD_SHARED "Build shared lib" ON)
 include_directories (
     include/
 )
-add_subdirectory(src)
 
-if (WITH_COVERAGE)
-	add_compile_options (-O0 -g --coverage)
-endif (WITH_COVERAGE)
+if (WITH_COVERAGE AND CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+    add_compile_options (-O0 -g --coverage)
+    link_libraries (--coverage)
+endif (WITH_COVERAGE AND CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+
+
+add_subdirectory(src)
 
 if (WITH_TESTS)
     enable_testing ()
